@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  project-zomboid:
+    image: ghcr.io/thijsvanloef/pzserver:latest
+    container_name: pzserver
+    restart: unless-stopped
+    ports:
+      - "16261:16261/udp"
+      - "8766:8766/udp"
+      - "16262-16272:16262-16272/tcp"
+    environment:
+      - ADMIN_PASSWORD=admin123
+      - SERVER_NAME=MyPZServer
+      - SERVER_PASSWORD=
+      - SERVER_PUBLIC=true
+      - GAME_MODE=Sandbox
+      - STEAMVAC=true
+    volumes:
+      - ./data:/home/steam/Zomboid
