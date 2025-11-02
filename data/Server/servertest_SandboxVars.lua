@@ -592,7 +592,7 @@ SandboxVars = {
         -- Ajusta a população do início do jogo. Mínimo = 0,00 Máximo = 4,00 Padrão = 1,00
         PopulationStartMultiplier = 0.2,
         -- Ajusta a população no dia de pico. Mínimo = 0,00 Máximo = 4,00 Padrão = 1,50
-        PopulationPeakMultiplier = 2.0,
+        PopulationPeakMultiplier = 4.0,
         -- Dia em que a população alcançará seu pico. Mínimo = 1 Máximo = 365 Padrão = 28
         PopulationPeakDay = 365,
         -- Horas necessárias para passar por uma área antes que os zumbis reaparaceçam nessa região. Se for 0, não haverá respawn. Mínimo = 0,00 Máximo = 8760,00 Padrão = 72,00
@@ -650,13 +650,13 @@ SandboxVars = {
         -- At what time the night end in Spring.  Mínimo = 0 Máximo = 23 Padrão = 6
         Spring_Night_End = 6,
         -- Percentage of Crawlers present in the world during the day. Crawler, Shambler, FastShambler and Sprinter must add up to 100. Mínimo = 0,00 Máximo = 100,00 Padrão = 5,00
-        Crawler_Day = 9.5,
+        Crawler_Day = 5.0,
         -- Percentage of Shamblers present in the world during the day. Percentage of Crawler, Shambler, FastShambler and Sprinter must add up to 100. Mínimo = 0,00 Máximo = 100,00 Padrão = 65,00
         Shambler_Day = 65.0,
         -- Percentage of Fast Shamblers present in the world during the day. Crawler, Shambler, FastShambler and Sprinter must add up to 100. Mínimo = 0,00 Máximo = 100,00 Padrão = 25,00
         FastShambler_Day = 25.0,
         -- Percentage of Sprinters present in the world during the day. Crawler, Shambler, FastShambler and Sprinter must add up to 100. Mínimo = 0,00 Máximo = 100,00 Padrão = 5,00
-        Sprinter_Day = 0.5,
+        Sprinter_Day = 5.0,
         -- Percentage of Fragile zombies present in the world during the day. Fragile, Normal and Tough must add up to 100. Mínimo = 0,00 Máximo = 100,00 Padrão = 30,00
         Fragile_Day = 30.0,
         -- Percentage of zombies with normal toughness present in the world during the day. Fragile, Normal and Tough must add up to 100. Mínimo = 0,00 Máximo = 100,00 Padrão = 50,00
@@ -666,13 +666,13 @@ SandboxVars = {
         -- Percentage of Smart zombies present in the world during the day. These zombies can open doors. Mínimo = 0,00 Máximo = 100,00 Padrão = 5,00
         Smart_Day = 5.0,
         -- Percentage of Crawlers present in the world during the night. Crawler, Shambler, FastShambler and Sprinter must add up to 100. Mínimo = 0,00 Máximo = 100,00 Padrão = 5,00
-        Crawler_Night = 9.5,
+        Crawler_Night = 5.0,
         -- Percentage of Shamblers present in the world during the night. Percentage of Crawler, Shambler, FastShambler and Sprinter must add up to 100. Mínimo = 0,00 Máximo = 100,00 Padrão = 25,00
         Shambler_Night = 25.0,
         -- Percentage of Fast Shamblers present in the world during the night. Crawler, Shambler, FastShambler and Sprinter must add up to 100. Mínimo = 0,00 Máximo = 100,00 Padrão = 65,00
         FastShambler_Night = 65.0,
         -- Percentage of Sprinters present in the world during the night. Crawler, Shambler, FastShambler and Sprinter must add up to 100. Mínimo = 0,00 Máximo = 100,00 Padrão = 5,00
-        Sprinter_Night = 0.5,
+        Sprinter_Night = 5.0,
         -- Percentage of Fragile zombies present in the world during the night. Fragile, Normal and Tough must add up to 100. Mínimo = 0,00 Máximo = 100,00 Padrão = 30,00
         Fragile_Night = 30.0,
         -- Percentage of zombies with normal toughness present in the world during the night. Fragile, Normal and Tough must add up to 100. Mínimo = 0,00 Máximo = 100,00 Padrão = 50,00
@@ -697,5 +697,55 @@ SandboxVars = {
         Tough_Special = 20.0,
         -- Percentage of Smart zombies present in the world during the special event. These zombies can open doors. Mínimo = 0,00 Máximo = 100,00 Padrão = 5,00
         Smart_Special = 5.0,
+    },
+    ProxInv = {
+        -- Enable this if you want the Proximity Inventory to work only on zombies
+        ZombieOnly = false,
+    },
+    Bandits = {
+        General_KillCounter = true,
+        -- Mínimo = 1,00 Máximo = 5,00 Padrão = 2,40
+        General_StunlockHitSpeed = 2.4,
+        -- Mínimo = 0,25 Máximo = 4,00 Padrão = 1,00
+        General_SpawnMultiplier = 1.0,
+        -- Mínimo = 0,25 Máximo = 4,00 Padrão = 1,00
+        General_SizeMultiplier = 1.0,
+        General_DensityScore = true,
+        General_OriginalBandits = true,
+        General_Surrender = true,
+        General_BleedOut = true,
+        General_Infection = true,
+        General_LimitedEndurance = true,
+        General_RunAway = true,
+        General_DestroyDoor = true,
+        General_SmashWindow = true,
+        General_RemoveBarricade = true,
+        General_DestroyThumpable = true,
+        General_SabotageVehicles = true,
+        General_Theft = true,
+        General_SabotageCrops = true,
+        General_EnterVehicles = false,
+        General_GeneratorCutoff = true,
+        General_BuildBridge = true,
+        General_BuildRoadblock = true,
+        General_Speak = true,
+        General_Captions = true,
+        General_SneakAtNight = true,
+        General_CarryTorches = true,
+        General_ArrivalIcon = true,
+        -- Bandit global weapon accuracy Padrão=Occasional Marksman
+        -- 1 = Stormtrooper Mode
+        -- 2 = Can't Hit the Broad Side of a Barn
+        -- 3 = Occasional Marksman
+        -- 4 = Sharpshooter on a Good Day
+        General_OverallAccuracy = 3,
+        -- Padrão=Normal
+        -- 1 = Nenhum
+        -- 2 = Incrivelmente Raro
+        -- 3 = Extremamente Raro
+        -- 4 = Raro
+        -- 5 = Normal
+        -- 6 = Comum
+        General_DefenderLootAmount = 6,
     },
 }
