@@ -1,11 +1,8 @@
 data/*
-!data/.gitkeep
 !data/backups/
 !data/db/
 !data/messaging/
 
 !data/Server/
 workshop-mods/*
-!workshop-mods/.gitkeep
 .env
-''
