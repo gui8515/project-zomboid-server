@@ -3,7 +3,7 @@ data/*
 !data/backups/
 !data/db/
 !data/messaging/
-!data/Saves/
+data/Saves/
 
 !data/Server/
 workshop-mods/*

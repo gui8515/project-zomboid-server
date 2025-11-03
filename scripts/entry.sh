@@ -144,22 +144,23 @@ if [ -n "${STEAMPORT2}" ]; then
   ARGS="${ARGS} -steamport2 ${STEAMPORT1}"
 fi
 
-if [ -n "${PASSWORD}" ]; then
-	sed -i "s/Password=.*/Password=${PASSWORD}/" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
-fi
+# The following sections that modify servertest.ini have been disabled to preserve manual configuration
+# if [ -n "${PASSWORD}" ]; then
+# 	sed -i "s/Password=.*/Password=${PASSWORD}/" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
+# fi
 
-if [ -n "${MOD_IDS}" ]; then
- 	echo "*** INFO: Found Mods including ${MOD_IDS} ***"
-	sed -i "s/Mods=.*/Mods=${MOD_IDS}/" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
-fi
+# if [ -n "${MOD_IDS}" ]; then
+#  	echo "*** INFO: Found Mods including ${MOD_IDS} ***"
+# 	sed -i "s/Mods=.*/Mods=${MOD_IDS}/" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
+# fi
 
-if [ -n "${WORKSHOP_IDS}" ]; then
- 	echo "*** INFO: Found Workshop IDs including ${WORKSHOP_IDS} ***"
-	sed -i "s/WorkshopItems=.*/WorkshopItems=${WORKSHOP_IDS}/" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
-else
- 	echo "*** INFO: Workshop IDs is empty, clearing configuration ***"
-	sed -i 's/WorkshopItems=.*$/WorkshopItems=/' "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
-fi
+# if [ -n "${WORKSHOP_IDS}" ]; then
+#  	echo "*** INFO: Found Workshop IDs including ${WORKSHOP_IDS} ***"
+# 	sed -i "s/WorkshopItems=.*/WorkshopItems=${WORKSHOP_IDS}/" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
+# else
+#  	echo "*** INFO: Workshop IDs is empty, clearing configuration ***"
+# 	sed -i 's/WorkshopItems=.*$/WorkshopItems=/' "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
+# fi
 
 # Fixes EOL in script file for good measure
 sed -i 's/\r$//' /server/scripts/search_folder.sh
@@ -171,23 +172,24 @@ if [ -e "${HOMEDIR}/pz-dedicated/steamapps/workshop/content/108600" ]; then
   map_list=$(<"${HOMEDIR}/maps.txt")  
   rm "${HOMEDIR}/maps.txt"
 
-  if [ -n "${map_list}" ]; then
-    echo "*** INFO: Added maps including ${map_list} ***"
-    sed -i "s/Map=.*/Map=${map_list}Muldraugh, KY/" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
+  # The following section that modifies Map in servertest.ini has been disabled to preserve manual configuration
+  # if [ -n "${map_list}" ]; then
+  #   echo "*** INFO: Added maps including ${map_list} ***"
+  #   sed -i "s/Map=.*/Map=${map_list}Muldraugh, KY/" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
 
-    # Checks which added maps have spawnpoints.lua files and adds them to the spawnregions file if they aren't already added
-    IFS=";" read -ra strings <<< "$map_list"
-    for string in "${strings[@]}"; do
-        if ! grep -q "$string" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}_spawnregions.lua"; then
-          if [ -e "${HOMEDIR}/pz-dedicated/media/maps/$string/spawnpoints.lua" ]; then
-            result="{ name = \"$string\", file = \"media/maps/$string/spawnpoints.lua\" },"
-            sed -i "/function SpawnRegions()/,/return {/ {    /return {/ a\
-            \\\t\t$result
-            }" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}_spawnregions.lua"
-          fi
-        fi
-    done
-  fi 
+  #   # Checks which added maps have spawnpoints.lua files and adds them to the spawnregions file if they aren't already added
+  #   IFS=";" read -ra strings <<< "$map_list"
+  #   for string in "${strings[@]}"; do
+  #       if ! grep -q "$string" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}_spawnregions.lua"; then
+  #         if [ -e "${HOMEDIR}/pz-dedicated/media/maps/$string/spawnpoints.lua" ]; then
+  #           result="{ name = \"$string\", file = \"media/maps/$string/spawnpoints.lua\" },"
+  #           sed -i "/function SpawnRegions()/,/return {/ {    /return {/ a\
+  #           \\\t\t$result
+  #           }" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}_spawnregions.lua"
+  #         fi
+  #       fi
+  #   done
+  # fi 
 fi
 
 # Fix to a bug in start-server.sh that causes to no preload a library:
