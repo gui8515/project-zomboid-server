@@ -162,35 +162,36 @@ fi
 # 	sed -i 's/WorkshopItems=.*$/WorkshopItems=/' "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
 # fi
 
+# The following section that searches for maps and modifies servertest.ini and servertest_spawnregions.lua
+# has been disabled to preserve manual configuration
 # Fixes EOL in script file for good measure
-sed -i 's/\r$//' /server/scripts/search_folder.sh
+# sed -i 's/\r$//' /server/scripts/search_folder.sh
 # Check 'search_folder.sh' script for details
-if [ -e "${HOMEDIR}/pz-dedicated/steamapps/workshop/content/108600" ]; then
-
-  map_list=""
-  source /server/scripts/search_folder.sh "${HOMEDIR}/pz-dedicated/steamapps/workshop/content/108600"
-  map_list=$(<"${HOMEDIR}/maps.txt")  
-  rm "${HOMEDIR}/maps.txt"
-
-  # The following section that modifies Map in servertest.ini has been disabled to preserve manual configuration
-  # if [ -n "${map_list}" ]; then
-  #   echo "*** INFO: Added maps including ${map_list} ***"
-  #   sed -i "s/Map=.*/Map=${map_list}Muldraugh, KY/" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
-
-  #   # Checks which added maps have spawnpoints.lua files and adds them to the spawnregions file if they aren't already added
-  #   IFS=";" read -ra strings <<< "$map_list"
-  #   for string in "${strings[@]}"; do
-  #       if ! grep -q "$string" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}_spawnregions.lua"; then
-  #         if [ -e "${HOMEDIR}/pz-dedicated/media/maps/$string/spawnpoints.lua" ]; then
-  #           result="{ name = \"$string\", file = \"media/maps/$string/spawnpoints.lua\" },"
-  #           sed -i "/function SpawnRegions()/,/return {/ {    /return {/ a\
-  #           \\\t\t$result
-  #           }" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}_spawnregions.lua"
-  #         fi
-  #       fi
-  #   done
-  # fi 
-fi
+# if [ -e "${HOMEDIR}/pz-dedicated/steamapps/workshop/content/108600" ]; then
+#
+#   map_list=""
+#   source /server/scripts/search_folder.sh "${HOMEDIR}/pz-dedicated/steamapps/workshop/content/108600"
+#   map_list=$(<"${HOMEDIR}/maps.txt")  
+#   rm "${HOMEDIR}/maps.txt"
+#
+#   if [ -n "${map_list}" ]; then
+#     echo "*** INFO: Added maps including ${map_list} ***"
+#     sed -i "s/Map=.*/Map=${map_list}Muldraugh, KY/" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}.ini"
+#
+#     # Checks which added maps have spawnpoints.lua files and adds them to the spawnregions file if they aren't already added
+#     IFS=";" read -ra strings <<< "$map_list"
+#     for string in "${strings[@]}"; do
+#         if ! grep -q "$string" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}_spawnregions.lua"; then
+#           if [ -e "${HOMEDIR}/pz-dedicated/media/maps/$string/spawnpoints.lua" ]; then
+#             result="{ name = \"$string\", file = \"media/maps/$string/spawnpoints.lua\" },"
+#             sed -i "/function SpawnRegions()/,/return {/ {    /return {/ a\
+#             \\\t\t$result
+#             }" "${HOMEDIR}/Zomboid/Server/${SERVERNAME}_spawnregions.lua"
+#           fi
+#         fi
+#     done
+#   fi 
+# fi
 
 # Fix to a bug in start-server.sh that causes to no preload a library:
 # ERROR: ld.so: object 'libjsig.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
