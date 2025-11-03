@@ -1,5 +1,10 @@
 data/*
 !data/.gitkeep
+!data/backups/
+!data/db/
+!data/messaging/
+!data/Saves/
+
 !data/Server/
 workshop-mods/*
 !workshop-mods/.gitkeep
